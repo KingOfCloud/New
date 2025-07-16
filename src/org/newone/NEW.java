@@ -3,7 +3,7 @@ package org.newone;
 public class NEW {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
