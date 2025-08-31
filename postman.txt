@@ -1,1 +1,29 @@
-Hi
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+pm.test("Response has token email", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.data).to.have.property("email");
+});
+pm.test("firsname is Janet", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.data.first_name).to.eql("Janet");
+});
+
+pm.test("Response time is less than 1000ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(1000);
+});
+
+
+let urlForSingleUser =pm.environment.get("baseUri")+pm.environment.get("singleUser");
+pm.environment.set("urlForSingleUser",urlForSingleUser);
+
+pm.test("validate the status Code",function(){
+    pm.response.to.have.status(201);
+})
+
+var data=pm.response.json();
+var idDat =data.id;
+pm.environment.set("postId",idDat);
+
+
